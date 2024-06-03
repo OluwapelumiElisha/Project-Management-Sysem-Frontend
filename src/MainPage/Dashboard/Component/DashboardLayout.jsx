@@ -7,12 +7,15 @@ import '/src/App.css'
 import { useFirstList } from '../utils/useFirstList';
 import { NavLink } from 'react-router-dom';
 import { useSecondList } from '../utils/useSecondList';
+import { useCurrentUser } from '@/Shared/hook/useCurrentUser';
 const DashboardLayout = ({children}) => {
   const [isToggle, setisToggle] = useState(false)
+  const { currentUser, handleLogout } = useCurrentUser()
+ console.log(currentUser);
   return (
     
       <div>
-        <header className="z-10 bg-white shadow-md p-1 flex justify-between items-center">
+        <header className=" z-10 bg-white shadow-md p-1 flex justify-between items-center">
         <div className="flex lg:ms-6 md:ms-6 ms-1 items-center lg:space-x-5 md:space-x-5 sm:space-x-3 space-x-1">
           {/* Logo */}
           <img src={logo} alt="PMS Logo" className="h-8 w-8 " />
@@ -82,7 +85,7 @@ const DashboardLayout = ({children}) => {
           {/* User Avatar with Active Status */}
           <div className="relative">
             <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
-              <img src="path-to-your-image.jpg" alt="User Avatar" />
+              <img src={currentUser?.image} alt="User Avatar" />
             </div>
             <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-500"></span>
           </div>
@@ -92,14 +95,14 @@ const DashboardLayout = ({children}) => {
 
 
       {/* sidenav */}
-      <div className="flex ">
+      <div className="flex w-full">
        { 
     !isToggle && 
     <img src={menu} className='w-8 h-8 md:hidden ' onClick={()=> setisToggle(!isToggle)} alt="" />
     }
         <div className={`z-0 bg-white shadow-2xl h-full  lg:block md:block lg:w-[20%] w-[15%] p-4 overflow-y-auto  ${isToggle ? 'block' : 'hidden'}`}>
           <div className='flex'>
-            <div className='mt-2 space-y-32'>
+            <div className='mt-2 space-y-36'>
               <ul className='lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0'>
               {
         useFirstList.map((items,i)=>{
@@ -159,7 +162,7 @@ const DashboardLayout = ({children}) => {
         </div>
             
        {/* <h1>wewewe</h1> */}
-       <section class='bg'>
+       <section  className='w-[100%]'>
         {children}
        </section>
       </div>

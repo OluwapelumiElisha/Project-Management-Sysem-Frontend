@@ -48,7 +48,7 @@ export const useLoginPage = () => {
        if (error) {
         toast({
           title: "ERROR",
-          description: 'Please Recheck your details',
+          description: 'Invalid Login Credentail',
         });
       }
     }

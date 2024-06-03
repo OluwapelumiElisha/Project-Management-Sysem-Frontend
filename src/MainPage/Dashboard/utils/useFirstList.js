@@ -15,7 +15,7 @@ export const useFirstList = [
     {
       name: 'Create Project',
       sideicon : Seven,
-      path: '/CreateProject'
+      path: 'CreateProject'
     },
     {
       name: 'Task Management',
@@ -37,11 +37,11 @@ export const useFirstList = [
       sideicon : Five,
       path: 'Analytics'
     },
-    {
-      name: 'Feedback',
-      sideicon: Six,
-      path: 'Feedback'
-    },
+    // {
+    //   name: 'Feedback',
+    //   sideicon: Six,
+    //   path: 'Feedback'
+    // },
     // {
     //   name: 'Integration',
     //   sideicon: Seven,

@@ -3,6 +3,7 @@ import LoginForm from "@/Auth/Login/Component/LoginForm";
 import OTP from "@/Auth/OTP";
 import Sideimage from "@/Auth/Sideimage";
 import SignupFrom from "@/Auth/Signup/Component/SignupFrom";
+import CreateProject from "@/MainPage/CreateProject";
 import Dashboard from "@/MainPage/Dashboard";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -41,6 +42,10 @@ export const route = createBrowserRouter([
         path:"TaskManagement",
         element: <h1>Task Management</h1>
       },
+      {
+        path: "CreateProject",
+        element: <CreateProject/>
+      }
       // {
       //   path:"/Otp",
       //   element: <OTP/>
