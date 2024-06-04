@@ -33,7 +33,7 @@ export const useFirstList = [
       path: 'File-Sharing'
     },
     {
-      name: 'Analytics and Reporting',
+      name: 'Analytics Reporting',
       sideicon : Five,
       path: 'Analytics'
     },

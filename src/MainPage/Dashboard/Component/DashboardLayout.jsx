@@ -109,9 +109,9 @@ const DashboardLayout = ({children}) => {
           return(
             <li key={i} className=" block py-2 -px-4 text-black  sm:text-xs text-xs lg:text-base font-sans  rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500 text-black" >
           <NavLink  className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-black" : ""
+                        isPending ? "pending" : isActive ? "text-red-500" : ""
                       } to={items.path} >
-                        <div className='flex lg:gap-4 md:gap-4 sm:gap-3  '>
+                        <div className='flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0 '>
                           <img src={items.sideicon} className=' w-[20px] block sm-hidden  lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-5 sm:h-5' class="imgicon" alt="" />
                           <div className='lg:block md:block sm:hidden hidden'>
                             {items.name}
@@ -133,7 +133,7 @@ const DashboardLayout = ({children}) => {
           <NavLink  className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "text-black" : ""
                       }  >
-                        <div className='flex lg:gap-4 md:gap-4 sm:gap-3  '>
+                        <div className='flex lg:gap-4 md:gap-1 sm:gap-3  md:-ms-3 lg:ms-0 sm:ms-0 ms-0'>
                           <img src={items.sideicon} className=' w-[20px] block sm-hidden  lg:w-5 lg:h-6 md:w-4 md:h-4 sm:w-5 sm:h-5' class="imgicon" alt="" />
                           <div className='lg:block md:block sm:hidden hidden'>
                             {items.name}

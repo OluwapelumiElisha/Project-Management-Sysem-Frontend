@@ -45,14 +45,11 @@ export const route = createBrowserRouter([
       {
         path: "CreateProject",
         element: <CreateProject/>
-      }
-      // {
-      //   path:"/Otp",
-      //   element: <OTP/>
-      // },{
-      //   path:'/ForgetPassword',
-      //   element : <h1>Coming Soon.</h1>
-      // }
+      },
+      {
+        path:"File-Sharing",
+        element: <h1>File-Sharing</h1>
+      },
     ],
   },
-  ]);
+])
