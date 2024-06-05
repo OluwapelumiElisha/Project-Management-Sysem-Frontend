@@ -4,6 +4,7 @@ import OTP from "@/Auth/OTP";
 import Sideimage from "@/Auth/Sideimage";
 import SignupFrom from "@/Auth/Signup/Component/SignupFrom";
 import CreateProject from "@/MainPage/CreateProject";
+import CreatedProject from "@/MainPage/CreatedProject";
 import Dashboard from "@/MainPage/Dashboard";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -49,7 +50,10 @@ export const route = createBrowserRouter([
       {
         path:"File-Sharing",
         element: <h1>File-Sharing</h1>
-      },
+      },{
+      path: 'ProjectCreated',
+      element: <CreatedProject/>
+      }
     ],
   },
 ])

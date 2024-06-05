@@ -1,22 +1,23 @@
 import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 import { useCreateProject } from '../hook/useCreateProject';
-
+import '/src/App.css'
 const FormComponent = () => {
   const {handleSubmit,
     title,
     setTitle,
     description, 
-    setDescription} = useCreateProject()
+    setDescription,
+  loading} = useCreateProject()
 
   return (
-    <div>
-      <h3 className='flex item-center justify-center mt-2 text-2xl font-bold text-red-500'>Create Project</h3>
+    <div class="bg">
+      <h3 className='rounded-lg shadow-md w-[60%] m-auto flex item-center justify-center mt-2 text-2xl font-bold text-red-500 mb-2'>CREATE PROJECT</h3>
       <div className="w-[95%] mx-auto -mt-2 p-6  rounded-lg shadow-md">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-wrap mb-4">
           <div className="w-full md:w-1/2 mb-4 md:mb-0 md:pr-2">
-            <label htmlFor="title" className="block text-xl text-red-500 font-bold mb-2">Title</label>
+            <label htmlFor="title" className="block text-xl text-black font-bold mb-2">Title</label>
             <input
               type="text"
               id="title"
@@ -27,7 +28,7 @@ const FormComponent = () => {
             />
           </div>
           <div className="w-full md:w-1/2 md:pl-2">
-            <label htmlFor="description" className="block text-xl  text-red-500 font-bold mb-2">Description</label>
+            <label htmlFor="description" className="block text-xl  text-black font-bold mb-2">Description</label>
             <textarea
               id="description"
               value={description}
@@ -39,14 +40,13 @@ const FormComponent = () => {
           </div>
         </div>
         <div className="flex justify-center">
-          <Button
-            type="submit"
-            className="px-4 py-2 bg-red-500 text-white font-bold rounded-md hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 border border-red-500"
-          >
-            Submit
-          </Button>
+         
+          <Button className=' px-4 py-2 bg-red-600 p-3' disabled={loading} type="submit">
+                    {loading ? "Creating..." : "Create Project"}
+                  </Button>
         </div>
       </form>
+
     </div>
     </div>
     

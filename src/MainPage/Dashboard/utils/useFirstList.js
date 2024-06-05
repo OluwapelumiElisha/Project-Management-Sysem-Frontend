@@ -18,6 +18,11 @@ export const useFirstList = [
       path: 'CreateProject'
     },
     {
+      name: 'Project Created',
+      sideicon : Two,
+      path: 'ProjectCreated'
+    },
+    {
       name: 'Task Management',
       sideicon : Two,
       path: 'TaskManagement'

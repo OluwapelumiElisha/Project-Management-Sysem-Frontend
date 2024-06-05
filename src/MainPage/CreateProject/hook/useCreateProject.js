@@ -1,14 +1,19 @@
-import { publicRequest } from "@/Shared/API/Request";
+import { UserRequest, publicRequest } from "@/Shared/API/Request";
+import { useCurrentUser } from "@/Shared/hook/useCurrentUser";
 import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
+
 
 export const useCreateProject = ()=>{
     const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const {currentUser } = useCurrentUser()
+  const [loading, setloading] = useState(false);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     // Handle form submission logic here
+    setloading(true)
     if(!title || !description){
         
         toast({
@@ -16,23 +21,34 @@ export const useCreateProject = ()=>{
             description: "Please fill all details",
           });
     }
-    // const formData = new FormData();
-    // formData.append("name", title);
-    // formData.append("description", description);
     const data = {
         name: title,
         description
     }
-
+    
     try {
-        const res = await publicRequest.post('/createProject', data)
+        const res = await UserRequest().post('/createProject', data)
       console.log(res);
+      toast({
+        title: "✔️✔️✔️",
+        description: "Project Created Successfully",
+      });
     } catch (error) {
-        
+        console.log(error);
+        if (error?.response?.data?.error) {
+          toast({
+            title: `Hello ${currentUser?.userName}`,
+            description: 'There is already Project Title',
+          });
+        }
     }
+    finally{
+    setloading(false)
+  }
     // console.log('Title:', title);
     // console.log('Description:', description);
   };
+  
 
     
     
@@ -74,6 +90,8 @@ export const useCreateProject = ()=>{
     title,
     setTitle,
     description, 
-    setDescription
+    setDescription,
+    loading
+
   }
 }
