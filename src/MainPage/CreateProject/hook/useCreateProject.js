@@ -2,6 +2,7 @@ import { UserRequest, publicRequest } from "@/Shared/API/Request";
 import { useCurrentUser } from "@/Shared/hook/useCurrentUser";
 import { toast } from "@/components/ui/use-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export const useCreateProject = ()=>{
@@ -9,6 +10,7 @@ export const useCreateProject = ()=>{
   const [description, setDescription] = useState('');
   const {currentUser } = useCurrentUser()
   const [loading, setloading] = useState(false);
+  const navigate = useNavigate()
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ export const useCreateProject = ()=>{
         title: "✔️✔️✔️",
         description: "Project Created Successfully",
       });
+      navigate("/Mainpage/ProjectCreated")
     } catch (error) {
         console.log(error);
         if (error?.response?.data?.error) {
