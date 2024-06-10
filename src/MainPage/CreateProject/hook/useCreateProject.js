@@ -11,6 +11,17 @@ export const useCreateProject = ()=>{
   const {currentUser } = useCurrentUser()
   const [loading, setloading] = useState(false);
   const navigate = useNavigate()
+  const [inputFields, setInputFields] = useState(['']);
+
+  const addInputField = () => {
+    if (inputFields.length < 10) {
+      setInputFields([...inputFields, '']);
+    }
+   
+  };
+  const logValues = () => {
+    console.log(inputFields);
+  };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -94,7 +105,12 @@ export const useCreateProject = ()=>{
     setTitle,
     description, 
     setDescription,
-    loading
+    loading,
+    addInputField,
+    inputFields,
+    logValues,
+    setInputFields,
+    setDescription,
 
   }
 }

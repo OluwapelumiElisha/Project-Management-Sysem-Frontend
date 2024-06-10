@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserRequest } from "../API/Request";
+import { toast } from "@/components/ui/use-toast";
 
 
 export const useCurrentUser = ()=>{
@@ -24,6 +25,14 @@ export const useCurrentUser = ()=>{
      } catch (error) {
       
          console.log(error);
+         if (error?.response?.data == "Your token expire pls login") {
+          toast({
+            title: "An Error Occured",
+            description: "Your Token Expire Pls Login Again",
+          });
+          navigate('/Login')
+          console.log("hello");
+         }
      }
    }
    function handleLogout() {

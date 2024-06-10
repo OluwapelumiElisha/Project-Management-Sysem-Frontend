@@ -38,23 +38,37 @@ export const useCreatedProject = () =>{
     });
     // setnoProjectYet(true)
     setisdelete(Math.random()*29992)
-   }
-  //  useEffect(() => {
-  //   handleGetUserProject();
-  //   // handleDeleteProject()
-  // }, []);
+   };
 
   useEffect(() => {
     handleGetUserProject();
     handleDeleteProject();
   }, [isdelete]);
-
+  // let dd = userProject?.project?.
+  const formatDate = () =>{
+    userProject.map((el)=>{
+    date = el?.startDate
+    const protime = new Date(date);
+    const now = new Date();
+    const diffMs = now - protime;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000)
+    if(diffHours < 1){
+      return `${diffMins} minues ago`
+    }else if (diffDays < 1){
+      return `${diffHours} minues ago`
+    }else{
+      return `${diffDays} minues ago`
+    }
+    })
+   
+  }
    return{
-    // handleGet,
-    // handleGetUserProject,
     userProject,
     handleDeleteProject,
-    noProjectYet
+    noProjectYet,
+    formatDate
    }
 
 }

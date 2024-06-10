@@ -1,15 +1,12 @@
 import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 import { useCreateProject } from '../hook/useCreateProject';
+// import { PlusIcon } from '@heroicons/react/solid';
 import '/src/App.css'
+import { PlusIcon } from 'lucide-react';
 const FormComponent = () => {
-  const {handleSubmit,
-    title,
-    setTitle,
-    description, 
-    setDescription,
-  loading} = useCreateProject()
-
+  const {handleSubmit, title, setTitle, description, setDescription, loading, addInputField, inputFields, logValues, setInputFields } = useCreateProject();
+  
   return (
     <div class="bg">
       <h3 className='rounded-lg shadow-md w-[60%] m-auto flex item-center justify-center mt-2 text-2xl font-bold text-red-500 mb-2'>CREATE PROJECT</h3>
@@ -39,6 +36,39 @@ const FormComponent = () => {
             ></textarea>
           </div>
         </div>
+        <div>
+          <h1 className='text-xl font-bold'>Add Task</h1>
+          <div className="max-w-md mx-auto mt-10">
+      {inputFields.map((field, index) => (
+        <input
+          key={index}
+          type="text"
+          className="block w-full px-4 py-2 mb-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300"
+          placeholder={`Input ${index + 1}`}
+          value={field}
+          onChange={(e) => {
+            const newInputFields = [...inputFields];
+            newInputFields[index] = e.target.value;
+            setInputFields(newInputFields);
+          }}
+        />
+      ))}
+      {inputFields.length < 10 && (
+        <span
+          onClick={addInputField}
+          className="flex items-center justify-center w-full p-2 mt-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none"
+        >
+          <PlusIcon className="w-5 h-5" />
+        </span>
+      )}
+      <span
+        onClick={logValues}
+        className="w-full p-2 mt-2 text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none"
+      >
+        Log Values
+      </span>
+    </div>
+        </div>
         <div className="flex justify-center">
          
           <Button className=' px-4 py-2 bg-red-600 p-3' disabled={loading} type="submit">
@@ -46,7 +76,7 @@ const FormComponent = () => {
                   </Button>
         </div>
       </form>
-
+      
     </div>
     </div>
     

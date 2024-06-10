@@ -50,10 +50,16 @@ export const route = createBrowserRouter([
       {
         path:"File-Sharing",
         element: <h1>File-Sharing</h1>
-      },{
+      },
+      {
       path: 'ProjectCreated',
       element: <CreatedProject/>
-      }
+      },
+      {
+        path: 'AddTask',
+        element: <h1></h1>
+        },
+
     ],
   },
 ])
