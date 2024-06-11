@@ -63,24 +63,26 @@
 import { Button } from '@/components/ui/button';
 import { useCreatedProject } from '../hook/useCreatedProject';
 import React from 'react';
+import { useAddTask } from '../hook/useAddTask';
 
 const TitleDescription = () => {
-  const { handleDeleteProject, userProject, noProjectYet, handleUpdate } = useCreatedProject();
-
+  const { handleDeleteProject, userProject, noProjectYet, formatDate } = useCreatedProject();
+  const { handleAddTask } = useAddTask()
   if (noProjectYet) {
     return <div>Empty</div>;
   }
 
   return (
+    
     <div className="space-y-2">
+      <p><b>Note:</b>  Click on each box to Add Task</p>
       {userProject?.map((project, i) => {
         return (
           <div key={i} className="">
             <div
-              onClick={() => handleUpdate(project)}
               className="p-4 w-[95%]  bg-white rounded-xl shadow-md space-y-1"
             >
-              <p className="float-right text-green-600">
+              <p className="float-right text-green-600 lg:text-base md:text-sm sm:text-sm text-xs">
                 {new Intl.DateTimeFormat(undefined, {
                   year: "numeric",
                   month: 'long',
@@ -91,7 +93,7 @@ const TitleDescription = () => {
                   hour12: true,
                 }).format(new Date(project?.startDate))}
               </p>
-
+                {/* <p>{formatDate(project?.startDate)}</p> */}
               <div className="space-y-1 flex flex-wrap gap-1 sm:gap-2 md:gap-2 lg:gap-4">
                 <h1 className="text-xl font-bold text-black">
                   Title:
@@ -108,12 +110,22 @@ const TitleDescription = () => {
                   {project?.description}
                 </p>
               </div>
+              <div className="flex justify-between w-full">
+                <Button onClick={() => handleAddTask(project)}>Add Task</Button>
+                <Button
+                  onClick={() => handleDeleteProject(project?._id)}
+                  className="text-white bg-red-600"
+                >
+                  Delete
+                </Button>
+              </div>
+              {/* <Button>hello</Button>
               <Button
                 onClick={() => handleDeleteProject(project?._id)}
-                className="text-white bg-red-600 lg:ms-[87%] md:ms-[87%] sm:ms-[87%]"
+                className="text-white bg-red-600 "
               >
                 Delete
-              </Button>
+              </Button> */}
             </div>
           </div>
         );

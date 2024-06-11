@@ -36,7 +36,6 @@ export const useCreatedProject = () =>{
       title: "✔️✔️✔️",
       description: "Project Deleted Successfully",
     });
-    // setnoProjectYet(true)
     setisdelete(Math.random()*29992)
    };
 
@@ -45,9 +44,10 @@ export const useCreatedProject = () =>{
     handleDeleteProject();
   }, [isdelete]);
   // let dd = userProject?.project?.
-  const formatDate = () =>{
-    userProject.map((el)=>{
-    date = el?.startDate
+  const formatDate = (date) =>{
+    // userProject.map((el)=>{
+    // const date = el?.startDate
+    // console.log(date);
     const protime = new Date(date);
     const now = new Date();
     const diffMs = now - protime;
@@ -55,13 +55,13 @@ export const useCreatedProject = () =>{
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000)
     if(diffHours < 1){
-      return `${diffMins} minues ago`
+      return  `${diffMins} minues ago`
     }else if (diffDays < 1){
       return `${diffHours} minues ago`
     }else{
       return `${diffDays} minues ago`
     }
-    })
+   
    
   }
    return{

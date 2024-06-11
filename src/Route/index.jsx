@@ -5,6 +5,7 @@ import Sideimage from "@/Auth/Sideimage";
 import SignupFrom from "@/Auth/Signup/Component/SignupFrom";
 import CreateProject from "@/MainPage/CreateProject";
 import CreatedProject from "@/MainPage/CreatedProject";
+import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
 import Dashboard from "@/MainPage/Dashboard";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -57,7 +58,7 @@ export const route = createBrowserRouter([
       },
       {
         path: 'AddTask',
-        element: <h1></h1>
+        element: <Addtask/>
         },
 
     ],
