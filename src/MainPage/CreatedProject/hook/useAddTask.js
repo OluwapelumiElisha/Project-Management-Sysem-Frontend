@@ -2,10 +2,8 @@
 
 import { UserRequest, publicRequest } from "@/Shared/API/Request";
 import { toast } from "@/components/ui/use-toast";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { z } from "zod";
 
 
 
@@ -13,9 +11,9 @@ import { z } from "zod";
 export const useAddTask = () => {
     const [eachProject, setEachProject] = useState(); 
     const navigate = useNavigate();
-    // const [inputFields, setInputFields] = useState(['']);
     const [loading, setloading] = useState(false);
     const [tasks, setTasks] = useState([]);
+    const [reaction, setreaction] = useState();
     
     const handleAddTask = (project) => {
         console.log("Project before navigate:", project);
@@ -51,19 +49,26 @@ export const useAddTask = () => {
     }
 
     const getTasks = async (projectId) => {
-        // setLoading(true);
-        // console.log(projectId);
         try {
             const res = await publicRequest.get(`/tasks/${projectId}`);
             setTasks(res?.data?.tasks);
-            // console.log(res, 'hello');
             console.log(res, 'hyyyyyy');
+            setreaction(Math.r)
         } catch (error) {
             console.error(error);
-            toast({
+            if (error?.response?.data?.message === "No tasks found for this project") {
+                toast({
+                    title: 'Error',
+                    description: 'No tasks found for this project',
+                });
+            }else{
+                toast({
                 title: 'Error',
                 description: 'Failed to fetch tasks',
             });
+            }
+            
+
         } 
     };
 

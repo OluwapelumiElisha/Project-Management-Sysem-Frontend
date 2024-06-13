@@ -32,6 +32,14 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    extend: {
+      boxShadow: {
+        'red-xs': '0 10px 15px rgba(255, 0, 0, 0.5), 0 4px 6px rgba(255, 0, 0, 0.1)', // Customize as needed
+      }
+    }
+    
   },
   plugins: [require("tailwindcss-animate")],
 }
+// tailwind.config.js
+

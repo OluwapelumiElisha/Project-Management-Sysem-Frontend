@@ -18,6 +18,7 @@ const formSchema = z.object({
     .min(6, "Password must be at least 6 characters")
     .max(20)
     .nonempty("Password is required"),
+    title: z.string().min(3)
 });
 export const useSignUp = () => {
   const [loading, setloading] = useState(false);
@@ -43,7 +44,7 @@ export const useSignUp = () => {
     formData.append("userName", data.userName);
     formData.append("email", data.email);
     formData.append("password", data.password);
-
+    formData.append("title", data.title);
     console.log(formData);
     setloading(true)
     try {

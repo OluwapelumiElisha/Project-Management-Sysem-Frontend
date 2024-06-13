@@ -19,5 +19,11 @@ export const signUpinputs = [
       placeholder: "Enter your Password",
       required: true,
     },
+    {
+      name:'title',
+      type:'text',
+      placeholder:'Title',
+      required:true,
+    }
     
   ];
