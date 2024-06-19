@@ -1,19 +1,14 @@
-
-
 import { UserRequest, publicRequest } from "@/Shared/API/Request";
 import { toast } from "@/components/ui/use-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
-
-
 export const useAddTask = () => {
     const [eachProject, setEachProject] = useState(); 
     const navigate = useNavigate();
     const [loading, setloading] = useState(false);
     const [tasks, setTasks] = useState([]);
-    const [reaction, setreaction] = useState();
+    const [user, setUser] = useState();
+    const [isDelete, setIsDelete] = useState(false);
     
     const handleAddTask = (project) => {
         console.log("Project before navigate:", project);
@@ -39,21 +34,24 @@ export const useAddTask = () => {
         try {
             const res = await UserRequest().post('/createTask', data)
       console.log(res);
+      toast({
+        title: "✔️✔️✔️",
+        description: "Task Creating Successfully",
+      });
         } catch (error) {
             console.log(error);
         }
         finally{
             setloading(false)
         }
-        // alert(inputFields)
     }
 
     const getTasks = async (projectId) => {
+      setloading(true)
         try {
             const res = await publicRequest.get(`/tasks/${projectId}`);
             setTasks(res?.data?.tasks);
-            console.log(res, 'hyyyyyy');
-            setreaction(Math.r)
+            
         } catch (error) {
             console.error(error);
             if (error?.response?.data?.message === "No tasks found for this project") {
@@ -70,8 +68,38 @@ export const useAddTask = () => {
             
 
         } 
+        finally{
+          setloading(false)
+        }
     };
+    const handleDeleteTask = async (ID) => {
+        try {
+          console.log(ID);
+          const res = await publicRequest.delete(`/deleteTask/${ID}`);
+          console.log(res);
+          toast({
+            title: "✔️✔️✔️",
+            description: "Project Deleted Successfully",
+          });
+        } catch (error) {
+          console.error("Error deleting task:", error);
+          toast({
+            title: "❌❌❌",
+            description: "Failed to delete the project",
+          });
+        }
+      };
 
+
+    const getAllUser = async () =>{
+      const res = await UserRequest().get('/getAllUser')
+      console.log(res?.data, 'meeeee');
+      setUser(res?.data)
+    }
+
+      useEffect(() => {
+        getAllUser()
+      }, []);
 
 
     return {
@@ -80,7 +108,10 @@ export const useAddTask = () => {
     getTasks,
     handleCreateTask,
     loading,
-    tasks
+    tasks,
+    handleDeleteTask,
+    isDelete,
+    user
     };
 };
 

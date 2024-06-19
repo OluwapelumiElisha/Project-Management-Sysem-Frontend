@@ -5,9 +5,11 @@ export const useSecondList = [
     {
       name: 'Settings',
       sideicon : one,
+      path: 'settings'
     },
     {
         name: 'Log Out',
-        sideicon: Two
+        sideicon: Two,
+        path: 'Logout'
     }
 ]

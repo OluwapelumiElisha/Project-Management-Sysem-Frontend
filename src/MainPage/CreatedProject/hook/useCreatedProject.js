@@ -6,21 +6,23 @@ export const useCreatedProject = () =>{
   const [userProject, setuserProject] = useState();
   const [isdelete, setisdelete] = useState();
   const [noProjectYet, setnoProjectYet] = useState(false);
+  const [isloading, setisloading] = useState(false);
   const handleGetUserProject = async() => {
   
-    // alert()
+    setisloading(true)
     try {
         const res = await UserRequest().get('/getUserProject')
         const data = res?.data?.getUserProjects
       
       if(data.length == 0){
   setnoProjectYet(true)
-  // demo.textContent = "No Project Yet"
-  // alert()
       }
       setuserProject(data)
     } catch (error) {
         console.log(error);
+    }
+    finally{
+      setisloading(false)
     }
    }
 
@@ -41,9 +43,9 @@ export const useCreatedProject = () =>{
 
   useEffect(() => {
     handleGetUserProject();
-    handleDeleteProject();
+    // handleDeleteProject();
   }, [isdelete]);
-  // let dd = userProject?.project?.
+
   const formatDate = (date) =>{
     // userProject.map((el)=>{
     // const date = el?.startDate
@@ -64,11 +66,17 @@ export const useCreatedProject = () =>{
    
    
   }
+
+  useEffect(() => {
+    // handleGetUserProject();
+    handleDeleteProject();
+  }, [isdelete]);
    return{
     userProject,
     handleDeleteProject,
     noProjectYet,
-    formatDate
+    formatDate,
+    isloading
    }
 
 }

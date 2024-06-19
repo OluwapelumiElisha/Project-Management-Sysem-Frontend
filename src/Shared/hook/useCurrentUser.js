@@ -38,8 +38,7 @@ export const useCurrentUser = ()=>{
    function handleLogout() {
     localStorage.removeItem("token");
     setcurrentUser(null);
-    navigate("/auth/login");
-    // window.location.reload();
+    navigate("/Login");
   }
    useEffect(() => {
     getCurrentUser();

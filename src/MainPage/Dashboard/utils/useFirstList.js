@@ -27,11 +27,11 @@ export const useFirstList = [
       sideicon : Two,
       path: 'TaskManagement'
     },
-    {
-      name: 'Collaboration',
-      sideicon : Three,
-      path: 'Collaboration'
-    },
+    // {
+    //   name: 'Collaboration',
+    //   sideicon : Three,
+    //   path: 'Collaboration'
+    // },
     {
       name: 'File Sharing',
       sideicon : Four,

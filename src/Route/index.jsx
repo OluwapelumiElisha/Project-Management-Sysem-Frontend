@@ -7,6 +7,9 @@ import CreateProject from "@/MainPage/CreateProject";
 import CreatedProject from "@/MainPage/CreatedProject";
 import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
 import Dashboard from "@/MainPage/Dashboard";
+import SignOut from "@/MainPage/SignOut";
+import TaskManagement from "@/MainPage/TaskManagement";
+// import Sig
 import { createBrowserRouter } from "react-router-dom";
 
 export const route = createBrowserRouter([
@@ -42,7 +45,7 @@ export const route = createBrowserRouter([
 
       {
         path:"TaskManagement",
-        element: <h1>Task Management</h1>
+        element: <TaskManagement/>
       },
       {
         path: "CreateProject",
@@ -60,6 +63,14 @@ export const route = createBrowserRouter([
         path: 'AddTask',
         element: <Addtask/>
         },
+        {
+          path: 'Logout',  
+          element: <SignOut/>
+        },
+        {
+          path: 'settings',  
+          element: <h1>Helllo</h1>
+        }
 
     ],
   },
