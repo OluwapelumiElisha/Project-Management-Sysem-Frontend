@@ -7,6 +7,7 @@ import CreateProject from "@/MainPage/CreateProject";
 import CreatedProject from "@/MainPage/CreatedProject";
 import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
 import Dashboard from "@/MainPage/Dashboard";
+import FirstPage from "@/MainPage/FirstPage";
 import SignOut from "@/MainPage/SignOut";
 import TaskManagement from "@/MainPage/TaskManagement";
 // import Sig
@@ -40,7 +41,7 @@ export const route = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>ghhgghg</h1>,
+        element: <FirstPage/>,
       },
 
       {

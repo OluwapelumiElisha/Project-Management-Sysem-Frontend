@@ -80,7 +80,7 @@ const DashboardLayout = ({ children }) => {
 
           <div className="relative">
             <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
-              <img src={currentUser?.image} alt="User Avatar" />
+              <img src={currentUser?.image} alt="Your Picture" />
             </div>
             <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-500"></span>
           </div>

@@ -36,7 +36,12 @@ module.exports = {
       boxShadow: {
         'red-xs': '0 10px 15px rgba(255, 0, 0, 0.5), 0 4px 6px rgba(255, 0, 0, 0.1)', // Customize as needed
       }
-    }
+    },
+    extend: {
+      colors: {
+          'pale-pink': '#fffcfc',
+      },
+  },
     
   },
   plugins: [require("tailwindcss-animate")],

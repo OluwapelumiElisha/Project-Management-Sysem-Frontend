@@ -4,11 +4,21 @@ import { useCreatedProject } from '../hook/useCreatedProject';
 import React from 'react';
 import { useAddTask } from '../hook/useAddTask';
 import '/src/App.css'
+import { Link } from 'react-router-dom';
 const TitleDescription = () => {
   const { handleDeleteProject, userProject, noProjectYet, formatDate, isloading } = useCreatedProject();
   const { handleAddTask } = useAddTask()
   if (noProjectYet) {
-    return <div>Empty</div>;
+    return (
+      <div className="flex mt-20 flex-col items-center justify-center h-full p-4 bg-white ">
+      <svg className="w-16 h-16 mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v2a2 2 0 002 2h2a2 2 0 002-2v-2m-4-8v6m0-6a4 4 0 10-8 0v6a4 4 0 008 0zm-2 10a4 4 0 108 0v-6a4 4 0 00-8 0z" />
+      </svg>
+      <h2 className="text-2xl font-semibold text-gray-700">No projects available</h2>
+      <p className="text-gray-500 sm:text-sm text-xs lg:text-xl md:text-sm">Start by creating a new project to see it listed here.</p> <br /> 
+     <Link to={'/Mainpage/CreateProject'}> <Button className="bg-red-600">Create a Project</Button></Link>
+  </div>
+    )
   }
   if (isloading) {
     return ( 
@@ -25,23 +35,11 @@ const TitleDescription = () => {
       <div className="w-4 h-12 bg-red-500 animate-bounce delay-300"></div>
     </div>
   </div>
-//   <div className="flex items-center justify-center min-h-screen bg-gray-100">
-//   <div className="relative w-20 h-20">
-//     <div className="absolute top-0 left-0 w-20 h-20 border-4 border-solid border-red-500 border-t-transparent rounded-full animate-spin"></div>
-//     <div className="absolute top-0 left-0 w-16 h-16 border-4 border-solid border-red-500 border-b-transparent rounded-full animate-spin-reverse"></div>
-//     <div className="absolute top-0 left-0 w-12 h-12 border-4 border-solid border-red-500 border-l-transparent rounded-full animate-spin"></div>
-//   </div>
-// </div>
 
 
 
-  //   <div className="flex items-center justify-center min-h-screen bg-gray-100">
-  //   <div className="relative flex space-x-2">
-  //     <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-100"></div>
-  //     <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-200"></div>
-  //     <div className="w-4 h-4 bg-red-500 rounded-full animate-bounce delay-300"></div>
-  //   </div>
-  // </div>
+
+  
     );
   }
   return (

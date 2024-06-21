@@ -16,7 +16,7 @@ export const useSideBar = () =>{
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000); // 3 minutes
+    }, 2000); // 2 minutes
 
     return () => clearInterval(interval);
   }, []);

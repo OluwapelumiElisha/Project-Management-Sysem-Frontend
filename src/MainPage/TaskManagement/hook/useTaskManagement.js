@@ -1,8 +1,12 @@
 import { UserRequest, publicRequest } from "@/Shared/API/Request";
+import { useCurrentUser } from "@/Shared/hook/useCurrentUser";
+import { toast } from "@/components/ui/use-toast";
 import { useEffect, useState } from "react";
 
 export const useTaskManagement = () =>{
   const [taskAssigned, settaskAssigned] = useState();
+  const [isloading, setisloading] = useState(false);
+  const { currentUser } = useCurrentUser();
     const [isAssigned, setIsAssigned] = useState(() => {
         // Load initial state from localStorage
         const savedAssignments = localStorage.getItem("assignments");
@@ -21,12 +25,16 @@ export const useTaskManagement = () =>{
         }
       }
       const getTasksAssignedToUser = async() =>{
+        setisloading(true)
         try{
           const getTasks = await UserRequest().get('/taskAssignedToDisUser')
           console.log(getTasks)
           settaskAssigned(getTasks?.data?.tasks)
         }catch (error){
           console.log(error)
+        }
+        finally{
+          setisloading(false)
         }
       }
       useEffect(() => {
@@ -38,6 +46,7 @@ export const useTaskManagement = () =>{
         isAssigned,
         setIsAssigned,
         // getTasksAssignedToUser,
-        taskAssigned
+        taskAssigned,
+        isloading
       }
 } 
