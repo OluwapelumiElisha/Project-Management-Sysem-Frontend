@@ -8,6 +8,7 @@ import CreatedProject from "@/MainPage/CreatedProject";
 import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
 import Dashboard from "@/MainPage/Dashboard";
 import FirstPage from "@/MainPage/FirstPage";
+import OfflineAlert from "@/MainPage/OffLine";
 import SignOut from "@/MainPage/SignOut";
 import TaskManagement from "@/MainPage/TaskManagement";
 // import Sig
@@ -71,8 +72,12 @@ export const route = createBrowserRouter([
         {
           path: 'settings',  
           element: <h1>Helllo</h1>
-        }
+        },
 
     ],
   },
+  {
+    path: 'offline',
+    element: <h1>Please Check ur Network....</h1>
+  }
 ])

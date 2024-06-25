@@ -37,6 +37,9 @@ export const useTaskManagement = () =>{
           setisloading(false)
         }
       }
+      const handleCompleteTask = async(taskId)=>{
+        console.log(task);
+      }
       useEffect(() => {
         getTasksAssignedToUser();
       }, []);
@@ -47,6 +50,7 @@ export const useTaskManagement = () =>{
         setIsAssigned,
         // getTasksAssignedToUser,
         taskAssigned,
-        isloading
+        isloading,
+        handleCompleteTask
       }
 } 

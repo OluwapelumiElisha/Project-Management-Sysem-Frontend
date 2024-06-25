@@ -120,7 +120,7 @@ const DashboardLayout = ({ children }) => {
               </ul>
             </div>
             <div className="mt-auto mb-4">
-              {isToggle && <img src={del} onClick={() => setisToggle(!isToggle)} className="lg:hidden md:hidden mb-4 ml-auto w-[100%] h-6" alt="" />}
+              {isToggle && <img src={del} onClick={() => setisToggle(!isToggle)} className="lg:hidden md:hidden mb-4 ml-auto w-[100%] h-4" alt="" />}
             </div>
           </div>
         </div>

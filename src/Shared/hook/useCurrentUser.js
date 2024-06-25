@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserRequest } from "../API/Request";
 import { toast } from "@/components/ui/use-toast";
+import OfflineAlert from "@/MainPage/OffLine";
 
 
 export const useCurrentUser = ()=>{
@@ -29,9 +30,18 @@ export const useCurrentUser = ()=>{
           toast({
             title: "An Error Occured",
             description: "Your Token Expire Pls Login Again",
-          });
+          })
+
           navigate('/Login')
           console.log("hello");
+         }
+         else{
+          toast({
+            title: "Hello",
+            description: "Please Check your Network",
+          })
+          // <OfflineAlert/>
+          navigate('/offline')
          }
      }
    }

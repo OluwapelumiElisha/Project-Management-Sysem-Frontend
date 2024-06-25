@@ -1,8 +1,9 @@
 import React from 'react'
 import { useTaskManagement } from '../hook/useTaskManagement';
 import { Button } from '@/components/ui/button';
+import TaskButton from './TaskButton';
 const Task = () => {
-  const {taskAssigned, isloading } = useTaskManagement();
+  const {taskAssigned, isloading, handleCompleteTask,  } = useTaskManagement();
   // if(isloading){
   //   return(
   //     <div className="flex items-center justify-center min-h-screen bg-white-100">
@@ -16,7 +17,9 @@ const Task = () => {
   // }
   return (
     <div>
+      
       <h1 className='font-bold text-xl -mt-4'>Task</h1>
+      
       <p className='text-sm text-semibold'>Showing data of all assigned Task</p>
       <div className="flex items-center p-2 border rounded-lg shadow-sm mt-2">
       <div className="flex-grow justify-center">
@@ -76,29 +79,23 @@ const Task = () => {
     <div className='lg:flex md:flex sm:flex block justify-center item-center   lg:m-2 md:m-2 sm:m-1 m-0 lg:space-x-24 md:space-x-8 sm:space-x-4 space-x-1'>
       
     <h1 className='flex justify-center mt-2'> <span className='font-bold'>Title:</span> <br />{task?.name}</h1>
-    <p className="flex justify-center item-center"><span className='font-bold'>Description:</span> <br />{task?.description}</p>
+    <p className="flex justify-center item-center "><span className='font-bold'>Description:</span> <br />{task?.description}</p>
     </div>
 
     <div className='flex item-center justify-center lg:space-x-14 md:space-x-12 sm:space-x-8 space-x-2'>
       <div>
-        <Button className="rounded-2xl">Complete</Button>
+      <TaskButton taskId={task?._id} />
       </div>
-      
       <div >
               <img className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden" src={task?.assignedBy?.image} alt="User Avatar" />
             </div>
     </div>
     </div>
-    
-    
   </div>
     </div>
     )
-    
     })
    }
-  
-    
    </div>
     </div>
   )
