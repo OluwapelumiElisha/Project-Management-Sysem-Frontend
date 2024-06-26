@@ -7,6 +7,7 @@ import CreateProject from "@/MainPage/CreateProject";
 import CreatedProject from "@/MainPage/CreatedProject";
 import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
 import Dashboard from "@/MainPage/Dashboard";
+import FeedBackCom from "@/MainPage/FeedBack";
 import FirstPage from "@/MainPage/FirstPage";
 import OfflineAlert from "@/MainPage/OffLine";
 import SignOut from "@/MainPage/SignOut";
@@ -54,8 +55,8 @@ export const route = createBrowserRouter([
         element: <CreateProject/>
       },
       {
-        path:"File-Sharing",
-        element: <h1>File-Sharing</h1>
+        path:"Feedback",
+        element: <FeedBackCom/>
       },
       {
       path: 'ProjectCreated',

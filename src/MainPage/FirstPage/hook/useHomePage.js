@@ -6,8 +6,10 @@ export const useHomePage = () =>{
   const [allCompletedTasks, setAllCompletedTasks] = useState(0);
   const [projectTasks, setProjectTasks] = useState([]);
     const [userProject, setuserProject] = useState();
+    // const [style, setStyle] = useState();
+    const [isloading, setisloading] = useState(false);
     const handleGetUserProject = async() => {
-        // setisloading(true)
+        
         try {
             const res = await UserRequest().get('/getUserProject')
             const data = res?.data?.getUserProjects
@@ -19,9 +21,7 @@ export const useHomePage = () =>{
         } catch (error) {
             console.log(error);
         }
-        // finally{
-        //   setisloading(false)
-        // }
+       
         
        }
     //    scroll part 
@@ -43,58 +43,82 @@ export const useHomePage = () =>{
         try {
           const res = await UserRequest().get("/task-summary");
           const response = res?.data;
-  
-          
-        
         } catch (error) {
           console.error("Error fetching task summary:", error);
         }
       };
     const handlegetAllProjectInfo = async() => {
       // getting all project colllection and task collection 
+      
         try {
+          setisloading(true)
         const res = await UserRequest().get('/getuiuiut')
         console.log(res?.data);
         const response = res?.data
         setuserProject(response)
-
           // getting total task assignedTo a user 
-        const getAllAssignedTo = userProject?.flatMap(project => 
-          project?.tasks?.map(task => task?.assignedTo?.length || 0) || []);
-      
-      const totalAssignedTo = getAllAssignedTo.reduce((total, length) => total + length, 0);
-
-      // console.log(totalAssignedTo, 'gggg');
+      if (!response) {
+        console.error("userProject is undefined or null");
+    } else {
+        const getAllAssignedTo = response.flatMap(project => {
+            if (!project || !project.tasks) {
+                console.warn("Project or project.tasks is undefined or null", project);
+                return [];
+            }
+            return project.tasks.map(task => {
+                if (!task || !task.assignedTo) {
+                    console.warn("Task or task.assignedTo is undefined or null", task);
+                    return 0;
+                }
+                return task.assignedTo.length || 0;
+            });
+        });
+    
+        const totalAssignedTo = getAllAssignedTo.reduce((total, length) => total + length, 0);
+        console.log(totalAssignedTo, 'hello');
         setAllAssignedTasks(totalAssignedTo)
-        // getting total task Completed 
-        const getAllComplete = userProject?.flatMap(project => 
-          project?.tasks?.map(task => task?.assignedTo?.completed))
-          console.log(getAllComplete, 'hello');
-          const totaldone = getAllComplete?.reduce((total, length)=> total + length, 0)
-          // console.log(totaldone);
-          setAllCompletedTasks(totaldone)
-          const aaa = userProject?.map((el)=>{
-            return el?.tasks?.map((el)=>{
-              return el?.assignedTo?.map((el)=>{
-                // if (el?.completed === true) {
-                //   console.log(e);
-                // }
-                // else{
-                //   console.log('ff');
-                // }
-                let gg = el?.completed === true
-                console.log(gg?.length);
-              })
-            })
-          })
-          console.log(aaa);
+    }
+          // getting total task Completed 
+          if (!response) {
+            console.error("userProject is undefined or null");
+        } else {
+            const getAllAssignedTo = response.flatMap(project => {
+                if (!project || !project.tasks) {
+                    console.warn("Project or project.tasks is undefined or null", project);
+                    return [];
+                }
+        
+                return project.tasks.flatMap(task => {
+                    if (!task || !task.assignedTo) {
+                        console.warn("Task or task.assignedTo is undefined or null", task);
+                        return [];
+                    }
+        
+                    return task.assignedTo.map(assigned => ({
+                        completed: assigned?.completed || false
+                    }));
+                });
+            });
+        
+            const completedCount = getAllAssignedTo.filter(assigned => assigned?.completed)?.length;
+            const notCompletedCount = getAllAssignedTo.filter(assigned => !assigned?.completed)?.length;
+        
+            console.log(`Completed: ${completedCount}`);
+            setAllCompletedTasks(`${completedCount}`)
+            console.log(`Not Completed: ${notCompletedCount}`);
+        }
+       
         } catch (error) {
           console.log(error);
+        }
+        finally{
+          setisloading(false)
         }
       }
        useEffect(() => {
         handleGetUserProject();
         taskSummary()
+        handlegetAllProjectInfo()
       }, []);
 
        return{
@@ -103,7 +127,8 @@ export const useHomePage = () =>{
         allAssignedTasks,
         allCompletedTasks,
         projectTasks,
-        handlegetAllProjectInfo
+        handlegetAllProjectInfo, 
+        isloading
        }
     
 }

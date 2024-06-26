@@ -33,9 +33,9 @@ export const useFirstList = [
     //   path: 'Collaboration'
     // },
     {
-      name: 'File Sharing',
-      sideicon : Four,
-      path: 'File-Sharing'
+      name: 'Feedback',
+      sideicon : Six,
+      path: 'Feedback'
     },
     {
       name: 'Analytics Reporting',

@@ -5,7 +5,7 @@ import menu from '@/assets/menu_9441572.png';
 import del from '@/assets/delete_10097645.png';
 import '/src/App.css';
 import { useFirstList } from '../utils/useFirstList';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSecondList } from '../utils/useSecondList';
 import { useCurrentUser } from '@/Shared/hook/useCurrentUser';
 
@@ -42,8 +42,8 @@ const DashboardLayout = ({ children }) => {
               />
             </svg>
           </div>
-
-          <button className="relative">
+        <Link to={'/Mainpage/TaskManagement'}>
+        <button className="relative">
             <svg
               className="w-6 h-6 text-gray-600"
               fill="none"
@@ -60,7 +60,7 @@ const DashboardLayout = ({ children }) => {
             </svg>
             <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-400"></span>
           </button>
-
+        </Link>
           <button>
             <svg
               className="w-6 h-6 text-gray-600"

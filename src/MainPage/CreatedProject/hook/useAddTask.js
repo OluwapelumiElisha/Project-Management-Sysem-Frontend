@@ -38,6 +38,7 @@ export const useAddTask = () => {
         title: "✔️✔️✔️",
         description: "Task Creating Successfully",
       });
+      navigate('/Mainpage/ProjectCreated')
         } catch (error) {
             console.log(error);
         }
@@ -81,6 +82,7 @@ export const useAddTask = () => {
             title: "✔️✔️✔️",
             description: "Project Deleted Successfully",
           });
+          navigate('/Mainpage/ProjectCreated')
         } catch (error) {
           console.error("Error deleting task:", error);
           toast({

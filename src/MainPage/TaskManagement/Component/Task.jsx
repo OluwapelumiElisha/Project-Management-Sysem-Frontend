@@ -2,12 +2,14 @@ import React from 'react';
 import TaskButton from './TaskButton';
 import { useTaskManagement } from '../hook/useTaskManagement';
 import { useCurrentUser } from '@/Shared/hook/useCurrentUser';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Task = () => {
   const { currentUser } = useCurrentUser()
-  const { taskAssigned, isLoading } = useTaskManagement();
+  const { taskAssigned, isloading } = useTaskManagement();
 
-  if (isLoading) {
+  if (isloading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-white-100">
         <div className="relative flex space-x-2">
@@ -17,6 +19,18 @@ const Task = () => {
         </div>
       </div>
     );
+  }
+  if (taskAssigned == null) {
+   return(
+    <div className="flex mt-[16%] flex-col items-center justify-center h-full p-4 bg-white">
+    {/* <svg className="w-16 h-16 mb-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v2a2 2 0 002 2h2a2 2 0 002-2v-2m-4-8v6m0-6a4 4 0 10-8 0v6a4 4 0 008 0zm-2 10a4 4 0 108 0v-6a4 4 0 00-8 0z" />
+    </svg> */}
+    <h1 className='text-font-bold text-black text-xl'>Welcome {currentUser?.userName}</h1>
+    <h2 className="text-2xl font-semibold text-gray-700">No Task For You Yet...</h2>
+   
+   </div>
+   )
   }
 
   return (
@@ -34,6 +48,7 @@ const Task = () => {
       </div>
       <h1 className='mt-2 font-bold'>Task({taskAssigned?.length})</h1>
       <div className='bg-white'>
+       
         {taskAssigned?.map((task, i) => {
           const userAssignment = task.assignedTo.find(user => user.userId.toString() === currentUser._id.toString());
           return (
