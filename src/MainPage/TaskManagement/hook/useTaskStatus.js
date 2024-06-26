@@ -1,36 +1,53 @@
-import { UserRequest, publicRequest } from '@/Shared/API/Request';
-import { useState, useEffect } from 'react';
 
-const useTaskStatus = (taskId) => {
-  const [isComplete, setIsComplete] = useState(false);
+// import { UserRequest } from '@/Shared/API/Request';
+// import { useState } from 'react';
 
-  useEffect(() => {
-    const savedStatus = localStorage.getItem(`task-${taskId}`);
-    if (savedStatus) {
-      setIsComplete(savedStatus === 'true');
-    }
-  }, [taskId]);
+// const useTaskStatus = (taskId, initialStatus) => {
+//   const [isComplete, setIsComplete] = useState(initialStatus);
 
-  const toggleTaskStatus = async() => {
-    const newStatus = !isComplete;
-    setIsComplete(newStatus);
-    localStorage.setItem(`task-${taskId}`, newStatus);
-    console.log(taskId);
+//   const toggleTaskStatus = async () => {
+//     try {
+//       const response = await UserRequest().post(`/tasks/${taskId}/complete`)
+//       console.log(response, 'hello');
+//       if (!response) {
+//         throw new Error('Failed to toggle task status');
+//       }
+//       console.log(response?.data);
+//       // const data = await response.json();
+//       setIsComplete(response?.data?.completed);
+//       console.log(isComplete, 'hey');
+//     } catch (err) {
+//       console.error('Error:', err);
+//     }
+//   };
+
+//   return [isComplete, toggleTaskStatus];
+// };
+
+// export default useTaskStatus;
+
+
+import { UserRequest } from '@/Shared/API/Request';
+import { useState } from 'react';
+
+const useTaskStatus = (taskId, initialStatus) => {
+  const [isComplete, setIsComplete] = useState(initialStatus);
+
+  const toggleTaskStatus = async () => {
     try {
-        const response = await UserRequest().post(`/complete/${taskId}`)
-        console.log(response, 'hello');
-    } catch (error) {
-        console.log(error)
+      const response = await UserRequest().post(`/tasks/${taskId}/complete`)
+       console.log(response, 'hello');
+
+      if (!response) {
+        throw new Error('Failed to toggle task status');
+      }
+      setIsComplete(response?.data?.completed);
+    } catch (err) {
+      console.error('Error:', err);
     }
-   
-
-
-
-
-
   };
 
-  return { isComplete, toggleTaskStatus };
+  return [isComplete, toggleTaskStatus];
 };
 
 export default useTaskStatus;
