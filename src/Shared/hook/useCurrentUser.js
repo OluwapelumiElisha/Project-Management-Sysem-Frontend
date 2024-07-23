@@ -41,7 +41,7 @@ export const useCurrentUser = ()=>{
             description: "Please Check your Network",
           })
           // <OfflineAlert/>
-          navigate('/offline')
+          // navigate('/offline')
          }
      }
    }

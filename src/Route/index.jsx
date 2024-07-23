@@ -7,6 +7,7 @@ import CreateProject from "@/MainPage/CreateProject";
 import CreatedProject from "@/MainPage/CreatedProject";
 import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
 import Dashboard from "@/MainPage/Dashboard";
+import Error from "@/MainPage/ErrorPage";
 import FeedBackCom from "@/MainPage/FeedBack";
 import FirstPage from "@/MainPage/FirstPage";
 import OfflineAlert from "@/MainPage/OffLine";
@@ -77,8 +78,12 @@ export const route = createBrowserRouter([
 
     ],
   },
+  // {
+  //   path: 'offline',
+  //   element: <h1>Please Check ur Network....</h1>
+  // }, 
   {
-    path: 'offline',
-    element: <h1>Please Check ur Network....</h1>
-  }
+    path: "*",
+    element: <Error />,
+  },
 ])

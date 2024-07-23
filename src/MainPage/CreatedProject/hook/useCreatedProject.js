@@ -43,13 +43,9 @@ export const useCreatedProject = () =>{
 
   useEffect(() => {
     handleGetUserProject();
-    // handleDeleteProject();
   }, [isdelete]);
 
   const formatDate = (date) =>{
-    // userProject.map((el)=>{
-    // const date = el?.startDate
-    // console.log(date);
     const protime = new Date(date);
     const now = new Date();
     const diffMs = now - protime;
@@ -68,7 +64,6 @@ export const useCreatedProject = () =>{
   }
 
   useEffect(() => {
-    // handleGetUserProject();
     handleDeleteProject();
   }, [isdelete]);
    return{
