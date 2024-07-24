@@ -3,6 +3,7 @@ import LoginForm from "@/Auth/Login/Component/LoginForm";
 import OTP from "@/Auth/OTP";
 import Sideimage from "@/Auth/Sideimage";
 import SignupFrom from "@/Auth/Signup/Component/SignupFrom";
+import AnalyticsCart from "@/MainPage/Analytics/Component/AnalyticsCart";
 import CreateProject from "@/MainPage/CreateProject";
 import CreatedProject from "@/MainPage/CreatedProject";
 import Addtask from "@/MainPage/CreatedProject/Component/Addtask";
@@ -75,6 +76,10 @@ export const route = createBrowserRouter([
           path: 'settings',  
           element: <h1>Helllo</h1>
         },
+        {
+          path: 'Analytics',
+          element: <AnalyticsCart/>
+        }
 
     ],
   },

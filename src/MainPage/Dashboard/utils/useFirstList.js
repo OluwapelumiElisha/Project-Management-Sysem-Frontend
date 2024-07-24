@@ -42,15 +42,5 @@ export const useFirstList = [
       sideicon : Five,
       path: 'Analytics'
     },
-    // {
-    //   name: 'Feedback',
-    //   sideicon: Six,
-    //   path: 'Feedback'
-    // },
-    // {
-    //   name: 'Integration',
-    //   sideicon: Seven,
-    //   path: 'Integration'
-    // }
     
   ]
