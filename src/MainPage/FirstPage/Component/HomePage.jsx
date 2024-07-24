@@ -145,30 +145,9 @@ const HomePage = () => {
                           <span className="text-green-600">All Tasks</span>{" "}
                           <br />
                           {project?.tasks?.length}
-                          {/* {
-                         project?.tasks?.flatMap(el => el?.assignedTo?.length || 0).reduce((acc, length) => acc + length, 0)
-                        } <br />
-                        {
-                           project?.tasks?.flatMap(task => 
-                            task?.assignedTo?.filter(person => person?.completed === true).length || 0
-                          ).reduce((acc, length) => acc + length, 0)
-                        } */}
+                        
                         </p>
-                        {/* <div className="flex justify-between items-center mt-4 text-gray-500 text-sm">
-                        <span>Label</span>
-                        <div className="flex -space-x-2">
-                          <img
-                            className="w-6 h-6 rounded-full border-2 border-white"
-                            src="/avatar1.png"
-                            alt="Avatar 1"
-                          />
-                          <img
-                            className="w-6 h-6 rounded-full border-2 border-white"
-                            src="/avatar2.png"
-                            alt="Avatar 2"
-                          />
-                        </div>
-                      </div> */}
+                       
                       </div>
                     );
                   })}

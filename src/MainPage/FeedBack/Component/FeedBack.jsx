@@ -6,21 +6,20 @@ import GenericForminput from '@/Shared/GenericFormInput';
 import { useFeedBack } from '../hook/useFeedBack';
 
 const FeedBack = () => {
-  // const [rating, setRating] = useState(4);
   const [comments, setComments] = useState('');
   const [feedbackType, setFeedbackType] = useState('');
-  const {form, onSubmit, } = useFeedBack()
-  // const handleRatingChange = (newRating) => {
-  //   setRating(newRating);
+  const {form, onSubmit, rating,
+    handleRatingChange,
+    setRating} = useFeedBack()
+        
+
+  // const handleCommentsChange = (event) => {
+  //   setComments(event.target.value);
   // };
 
-  const handleCommentsChange = (event) => {
-    setComments(event.target.value);
-  };
-
-  const handleFeedbackTypeChange = (event) => {
-    setFeedbackType(event.target.value);
-  };
+  // const handleFeedbackTypeChange = (event) => {
+  //   setFeedbackType(event.target.value);
+  // };
 
   // const handleSubmit = () => {
   //   // Handle form submission logic
@@ -41,9 +40,9 @@ const FeedBack = () => {
             <svg
               key={star}
               onClick={() => handleRatingChange(star)}
-              // className={`w-8 h-8 cursor-pointer ${
-              //   rating >= star ? 'text-yellow-500' : 'text-gray-300'
-              // }`}
+              className={`w-8 h-8 cursor-pointer ${
+                rating >= star ? 'text-yellow-500' : 'text-gray-300'
+              }`}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
