@@ -1,7 +1,7 @@
 import axios from "axios"
 
 
-const baseURL = 'http://localhost:4000'
+const baseURL = 'https://project-management-system-dcbh.onrender.com'
 
 
 export const publicRequest = axios.create({
