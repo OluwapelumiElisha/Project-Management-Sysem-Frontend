@@ -17,7 +17,5 @@ export const UserRequest = () =>{
             "Content-Type": "application/json",
             Authorization : `Bearer ${token}`
         }
-    })
-    
-
+    })     
 }
