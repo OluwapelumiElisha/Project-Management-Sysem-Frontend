@@ -59,7 +59,7 @@ const Addtask = () => {
           </div>
           {isBoxOpen && (
             <div className="bg-gray-100 rounded-lg p-4 mt-4 absolute top-full right-0">
-              <p>This is a small box content.</p>
+              <p>Project Info</p>
             </div>
           )}
           <div>
