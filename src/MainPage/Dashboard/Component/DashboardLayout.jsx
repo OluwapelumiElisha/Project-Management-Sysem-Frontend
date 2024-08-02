@@ -1,13 +1,12 @@
-
-import React, { useState } from 'react';
-import logo from '@/assets/Exclude.png';
-import menu from '@/assets/menu_9441572.png';
-import del from '@/assets/delete_10097645.png';
-import '/src/App.css';
-import { useFirstList } from '../utils/useFirstList';
-import { Link, NavLink } from 'react-router-dom';
-import { useSecondList } from '../utils/useSecondList';
-import { useCurrentUser } from '@/Shared/hook/useCurrentUser';
+import React, { useState } from "react";
+import logo from "@/assets/Exclude.png";
+import menu from "@/assets/menu_9441572.png";
+import del from "@/assets/delete_10097645.png";
+import "/src/App.css";
+import { useFirstList } from "../utils/useFirstList";
+import { Link, NavLink } from "react-router-dom";
+import { useSecondList } from "../utils/useSecondList";
+import { useCurrentUser } from "@/Shared/hook/useCurrentUser";
 
 const DashboardLayout = ({ children }) => {
   const [isToggle, setisToggle] = useState(false);
@@ -18,7 +17,9 @@ const DashboardLayout = ({ children }) => {
       <header className="fixed top-0 left-0 right-0 z-10 bg-white shadow-md p-1 flex justify-between items-center">
         <div className="flex lg:ms-6 md:ms-6 ms-1 items-center lg:space-x-5 md:space-x-5 sm:space-x-3 space-x-1">
           <img src={logo} alt="PMS Logo" className="h-8 w-8" />
-          <span className="font-semibold lg:text-xl md:text-sm text-sm">Projectify</span>
+          <span className="font-semibold lg:text-xl md:text-sm text-sm">
+            Projectify
+          </span>
         </div>
         <div className="flex me-10 items-center w-[50%] space-x-3">
           <div className="relative flex-grow">
@@ -42,25 +43,25 @@ const DashboardLayout = ({ children }) => {
               />
             </svg>
           </div>
-        <Link to={'/Mainpage/TaskManagement'}>
-        <button className="relative">
-            <svg
-              className="w-6 h-6 text-gray-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0m6 0H9"
-              />
-            </svg>
-            <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-400"></span>
-          </button>
-        </Link>
+          <Link to={"/Mainpage/TaskManagement"}>
+            <button className="relative">
+              <svg
+                className="w-6 h-6 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0m6 0H9"
+                />
+              </svg>
+              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full ring-2 ring-white bg-red-400"></span>
+            </button>
+          </Link>
           <button>
             <svg
               className="w-6 h-6 text-gray-600"
@@ -89,30 +90,91 @@ const DashboardLayout = ({ children }) => {
 
       <div className="flex w-full mt-16">
         {!isToggle && (
-          <img src={menu} className="w-8 h-8 md:hidden" onClick={() => setisToggle(!isToggle)} alt="" />
+          <img
+            src={menu}
+            className="w-8 h-8 md:hidden "
+            onClick={() => setisToggle(!isToggle)}
+            alt=""
+          />
         )}
-        <div className={`fixed top-0 left-0 z-0 bg-white shadow-2xl h-full lg:block md:block lg:w-[20%] w-[15%] p-4 overflow-y-auto ${isToggle ? 'block' : 'hidden'}`}>
+        <div
+          className={`fixed top-0 left-0 z-0 bg-white shadow-2xl h-full lg:block md:block lg:w-[20%] w-[15%] p-4 overflow-y-auto ${
+            isToggle ? "block" : "hidden"
+          }`}
+        >
           <div className="flex flex-col h-full">
             <div className="mt-16 space-y-36">
               <ul className="lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0">
                 {useFirstList.map((items, i) => (
-                  <li key={i} className="block py-2 -px-4 text-black md:text-sm sm:text-xs text-xs lg:text-base font-sans rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500 text-black">
-                    <NavLink className={({ isActive, isPending }) => (isPending ? "pending" : isActive ? "text-red-500" : "")} to={items.path}>
-                      <div className="flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0">
-                        <img src={items.sideicon} className="w-[20px] block sm-hidden lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon" alt="" />
-                        <div className="lg:block md:block sm:hidden hidden ">{items.name}</div>
+                  <li
+                    key={i}
+                    className="block py-2 -px-4 text-black md:text-sm sm:text-xs text-xs lg:text-base font-sans rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500 text-black"
+                  >
+                    <NavLink
+                      className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-red-500" : ""
+                      }
+                      to={items.path}
+                    >
+                      <div className="hover: flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0 relative group">
+                        <img
+                          src={items.sideicon}
+                          className="w-[20px] block sm-hidden lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon"
+                          alt=""
+                        />
+                        <div className="lg:block md:block sm:hidden hidden ">
+                          {items.name}
+                        </div>
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-xs rounded py-1 px-2 z-10">
+                          {items.name}
+                        </div>
                       </div>
                     </NavLink>
                   </li>
                 ))}
               </ul>
-              <ul className="lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0 -mt-10">
+              {/* <ul className="lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0 -mt-10">
                 {useSecondList.map((items, i) => (
                   <li key={i} className="block py-2 -px-4 text-black sm:text-xs text-xs lg:text-base font-sans rounded md:bg-transparent md:text-black md:p-0 dark:text-white md:dark:text-blue-500">
                     <NavLink className={({ isActive, isPending }) => (isPending ? "pending" : isActive ? "text-red-500" : "")} to={items.path}>
-                      <div className="flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0">
+                      <div className=" hover: flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0">
                         <img src={items.sideicon} className="w-[20px] block sm-hidden lg:w-5 lg:h-6 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon" alt="" />
                         <div className="lg:block md:block sm:hidden hidden">{items.name}</div>
+                        <span className='hover'>
+                          {items.name}
+                        </span>
+                      </div>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul> */}
+              <ul className="lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0 -mt-10">
+                {useSecondList.map((items, i) => (
+                  <li
+                    key={i}
+                    className="block py-2 -px-4 text-black sm:text-xs text-xs lg:text-base font-sans rounded md:bg-transparent md:text-black md:p-0 dark:text-white md:dark:text-blue-500"
+                  >
+                    <NavLink
+                      className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-red-500" : ""
+                      }
+                      to={items.path}
+                    >
+                      <div className="hover: flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0 relative group">
+                        <img
+                          src={items.sideicon}
+                          className="w-[20px] block sm-hidden lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon"
+                          alt=""
+                        />
+                        <div className="lg:block md:block sm:hidden hidden">
+                          {items.name}
+                        </div>
+                        {/* <span>
+            {items.name}
+          </span> */}
+                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-xs rounded py-1 px-2 z-10">
+                          {items.name}
+                        </div>
                       </div>
                     </NavLink>
                   </li>
@@ -120,12 +182,23 @@ const DashboardLayout = ({ children }) => {
               </ul>
             </div>
             <div className="mt-auto mb-4">
-              {isToggle && <img src={del} onClick={() => setisToggle(!isToggle)} className="lg:hidden md:hidden mb-4 ml-auto w-[100%] h-4" alt="" />}
+              {isToggle && (
+                <img
+                  src={del}
+                  onClick={() => setisToggle(!isToggle)}
+                  className="lg:hidden md:hidden mb-4 ml-auto w-[100%] h-4"
+                  alt=""
+                />
+              )}
             </div>
           </div>
         </div>
 
-        <section className={`overflow-y-auto mt-21 p-4 ${isToggle ? 'w-full' : 'w-full lg:ml-[20%] md:ml-[15%]'}`}>
+        <section
+          className={`overflow-y-auto mt-21 p-4 ${
+            isToggle ? "w-full" : "w-full lg:ml-[20%] md:ml-[15%]"
+          }`}
+        >
           {children}
         </section>
       </div>

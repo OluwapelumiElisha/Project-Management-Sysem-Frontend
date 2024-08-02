@@ -1,4 +1,5 @@
 // import LoginForm from "@/Auth/Login/Component/LoginForm";
+import ForgetPassWord from "@/Auth/FORGETPASSWORD";
 import LoginForm from "@/Auth/Login/Component/LoginForm";
 import OTP from "@/Auth/OTP";
 import Sideimage from "@/Auth/Sideimage";
@@ -12,6 +13,7 @@ import Error from "@/MainPage/ErrorPage";
 import FeedBackCom from "@/MainPage/FeedBack";
 import FirstPage from "@/MainPage/FirstPage";
 import OfflineAlert from "@/MainPage/OffLine";
+import SettingPage from "@/MainPage/Settings";
 import SignOut from "@/MainPage/SignOut";
 import TaskManagement from "@/MainPage/TaskManagement";
 // import Sig
@@ -35,7 +37,7 @@ export const route = createBrowserRouter([
         element: <OTP/>
       },{
         path:'/ForgetPassword',
-        element : <h1>Coming Soon.</h1>
+        element : <ForgetPassWord/>
       }
     ],
   },
@@ -74,7 +76,7 @@ export const route = createBrowserRouter([
         },
         {
           path: 'settings',  
-          element: <h1>Helllo</h1>
+          element: <SettingPage/>
         },
         {
           path: 'Analytics',
