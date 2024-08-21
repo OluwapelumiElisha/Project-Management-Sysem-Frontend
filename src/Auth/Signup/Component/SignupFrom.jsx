@@ -74,7 +74,7 @@ const SignupForm = () => {
           </div>
           <div className="flex items-center justify-center mt-4">
             <p>Already have an Account?</p>
-            <Link to={'/'}><p className="text-red-600 font-bold cursor-pointer ps-2">Login</p></Link>
+            <Link to={'/Login'}><p className="text-red-600 font-bold cursor-pointer ps-2">Login</p></Link>
           </div>
         </div>
 

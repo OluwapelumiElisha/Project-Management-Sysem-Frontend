@@ -26,11 +26,11 @@ export const route = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LoginForm/>,
+        element: <SignupFrom/>,
       },
       {
-        path:"/SignUp",
-        element: <SignupFrom/>
+        path:"/Login",
+        element: <LoginForm/>
       },
       {
         path:"/Otp",
