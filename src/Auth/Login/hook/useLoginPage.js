@@ -22,6 +22,7 @@ const formSchema = z.object({
 export const useLoginPage = () => {
   const [loading, setloading] = useState(false);
   const [isShow, setisShow] = useState(false);
+  const [Email, setEmail] = useState();
   const navigate = useNavigate()
 
   const form = useForm({
@@ -57,6 +58,82 @@ export const useLoginPage = () => {
     }
   }
 
+  // const handleCheckEmail = async() =>{
+  //   const email = form.watch('email');
+  //           setEmail(email)
+  //           if (email == null) {
+  //             toast({
+  //               title: "Hello",
+  //               description: 'Please Enter Your Email',
+  //             })
+  //           }else{
+  //             try {
+  //               console.log(email);
+  //               const res = await publicRequest.post('/forgetPassword', {email})
+  //               console.log(res);
+  //             } 
+  //             //  catch (error) {
+  //             //   console.log(error);
+  //             //   if (error) {
+  //             //     toast({
+  //             //       title: "ERROR ❌❌❌",
+  //             //       description: 'This Email does not belong to any account.',
+  //             //     })
+  //             //   }else{
+  //             //     console.log(email);
+  //             // navigate('/ForgetPassword')
+  //             //   }
+                
+  //             // }
+  //             catch (error) {
+  //               console.log(error);
+  //               if(error){
+  //                  toast({
+  //                 title: "ERROR ❌❌❌",
+  //                 description: 'This Email does not belong to any account.',
+  //               });
+  //               }
+               
+  //             }
+  //             // If you want to navigate only if there is no error
+  //             if (!error) {
+  //               console.log(email);
+  //               navigate('/ForgetPassword');
+  //             }
+                 
+              
+  //           }
+  // }
+
+  const handleCheckEmail = async () => {
+    const email = form.watch('email');
+    setEmail(email);
+  
+    if (!email) {
+      toast({
+        title: "Hello",
+        description: 'Please Enter Your Email',
+      });
+    } else {
+      try {
+        console.log(email);
+        const res = await publicRequest.post('/forgetPassword', { email });
+        console.log(res);
+        // If the request is successful, navigate to the ForgetPassword page
+        localStorage.setItem('Keep', email);
+        navigate('/ForgetPassword');
+        
+
+      } catch (error) {
+        console.log(error);
+        toast({
+          title: "ERROR ❌❌❌",
+          description: 'This Email does not belong to any account.',
+        });
+      }
+    }
+  };
+  
   
   
 
@@ -65,5 +142,7 @@ export const useLoginPage = () => {
     loading,
     form,
     onSubmit,
+    handleCheckEmail,
+    Email
   }
 }

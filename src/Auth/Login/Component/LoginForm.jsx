@@ -4,21 +4,22 @@ import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import google from '/src/assets/google.png';
 import facebook from '/src/assets/facebook.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginPage } from "../hook/useLoginPage";
 import { LoginInput } from "../utils/LoginInput";
 import { useState } from "react";
 import eye from '@/assets/eye_660383.png';
 import hidden from '@/assets/hidden_2355322.png';
+// import { data } from "autoprefixer";
 
 const LoginForm = () => {
-  const { onSubmit, form, loading } = useLoginPage();
+  const { onSubmit, form, loading, handleCheckEmail } = useLoginPage();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
+  const navigate = useNavigate()
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
-
+ 
   return (
     <div className='bg-black-400 w-[100%] md:w-[45%] lg:w-[50%]'>
       <div className='w-[80%] lg:w-[55%] md:w-[80%] sm:w-[80%] h-[400px] m-auto mt-24 lg:ms-32 md:ms-18 sm:ms-14'>
@@ -34,6 +35,7 @@ const LoginForm = () => {
                     {...elem}
                     type={elem.name === 'password' && isPasswordVisible ? 'text' : elem.type}
                   />
+                 
                   {elem.name === 'password' && (
                     <span onClick={togglePasswordVisibility} className="absolute right-2 top-2 cursor-pointer text-sm text-blue-500">
                       {isPasswordVisible ? 
@@ -49,7 +51,26 @@ const LoginForm = () => {
                   <input type="checkbox" id="rememberMe" className="mr-2" />
                   <label htmlFor="rememberMe" className="text-sm">Remember me</label>
                 </div>
-               <Link to={'/ForgetPassword'}><p className="cursor-pointer text-red-600 font-bold">Forgot Password?</p></Link> 
+      
+                {/* <Link to={'/ForgetPassword'}> */}
+        <p
+          // onClick={() => {
+          //   const email = form.watch('email');
+          //   console.log(email); // Logs the value of the email input field
+          //   if (email == null) {
+              
+          //   }else{
+          //     navigate('/ForgetPassword')
+          //   }
+          // }}
+          onClick={handleCheckEmail}
+          className="cursor-pointer text-red-600 font-bold"
+        >
+          Forgot Password?
+        </p>
+      {/* </Link> */}
+
+           
               </div>
               <div className="flex items-center justify-center">
                 <Button className='w-full bg-red-600 p-3' disabled={loading} type="submit">
@@ -70,7 +91,7 @@ const LoginForm = () => {
         </div>
         <div className="flex items-center justify-center mt-4">
           <p>Don't have an account?</p>
-          <Link to={'/'}>
+          <Link to={'/SignUp'}>
             <p className="text-red-600 font-bold cursor-pointer pl-2">Sign Up</p>
           </Link>
         </div>
