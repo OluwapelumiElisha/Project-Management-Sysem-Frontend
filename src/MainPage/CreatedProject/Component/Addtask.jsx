@@ -161,7 +161,7 @@ const Addtask = () => {
                                   <div className="flex-shrink-0 w-10 h-10">
                                     <img
                                     onClick={handledisplaydescription}
-                                      className="w-10 h-10 rounded-full"
+                                      className="w-10 h-10 rounded-full cursor-pointer"
                                       src={user?.image}
                                       alt=""
                                     />
