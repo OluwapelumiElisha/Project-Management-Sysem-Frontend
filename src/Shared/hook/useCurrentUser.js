@@ -12,7 +12,7 @@ export const useCurrentUser = ()=>{
    const navigate = useNavigate()
    async function getCurrentUser() {
     if (!token) {
-      navigate('/Login')
+      navigate('/')
      }
      try {
       //    const res = await axios.get(
@@ -32,7 +32,7 @@ export const useCurrentUser = ()=>{
             description: "Your Token Expire Pls Login Again",
           })
 
-          navigate('/Login')
+          navigate('/')
           console.log("hello");
          }
          else{
@@ -48,7 +48,7 @@ export const useCurrentUser = ()=>{
    function handleLogout() {
     localStorage.removeItem("token");
     setcurrentUser(null);
-    navigate("/Login");
+    navigate("/");
   }
    useEffect(() => {
     getCurrentUser();
