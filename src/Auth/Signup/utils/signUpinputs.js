@@ -22,7 +22,7 @@ export const signUpinputs = [
     {
       name:'title',
       type:'text',
-      placeholder:'Title',
+      placeholder:'Your Job Title',
       required:true,
     }
     
