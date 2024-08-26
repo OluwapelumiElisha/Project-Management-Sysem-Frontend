@@ -17,6 +17,7 @@ const Addtask = () => {
     reaction,
     handleDeleteTask,
     user,
+    handledisplaydescription
   } = useAddTask();
   const { handleClick, isAssigned, setIsAssigned} = useTaskManagement()
   const location = useLocation();
@@ -159,6 +160,7 @@ const Addtask = () => {
                                 <div className="flex items-center">
                                   <div className="flex-shrink-0 w-10 h-10">
                                     <img
+                                    onClick={handledisplaydescription}
                                       className="w-10 h-10 rounded-full"
                                       src={user?.image}
                                       alt=""
