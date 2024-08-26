@@ -24,14 +24,7 @@ export const useSignUp = () => {
   const [loading, setloading] = useState(false);
   const [imageFile, setimageFile] = useState();
   const navigate = useNavigate()
-//   const { currentUser } = useCurrentUser()
 
-
-//   useEffect(() => {
-//     if (currentUser?.email) {
-//       navigate("/about");
-//     }
-//   }, [currentUser]);
   const form = useForm({
     resolver: zodResolver(formSchema),
   });
@@ -45,11 +38,10 @@ export const useSignUp = () => {
     formData.append("email", data.email);
     formData.append("password", data.password);
     formData.append("title", data.title);
-    console.log(formData);
+    // console.log(formData);
     setloading(true)
     try {
       const res = await publicRequest.post('/signUpuser', formData)
-      console.log(res);
       localStorage.setItem('Email', `${res?.data?.email}`)
       toast({
             title: "✔️✔️✔️",
