@@ -74,7 +74,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="bg-pale-pink lg:flex space-x-4  md:flex space-x-4 sm:block block">
+    <div className="bg-pale-pink lg:flex md:flex space-x-4 sm:block block">
       {/* first div  */}
       <div className="lg:w-[68%] md:w-full sm:w-full w-full">
 
@@ -97,7 +97,7 @@ const HomePage = () => {
             </div>
             <hr />
 
-            <div className="relative">
+            <div className="">
               <style>
                 {`
                 .scroll-container::-webkit-scrollbar {
@@ -115,7 +115,7 @@ const HomePage = () => {
                   className="w-6 cursor-pointer h-6"
                 />
               </div>
-              <div className="overflow-hidden">
+              <div className="overflow-hidden ">
                 <div
                   id="scroller"
                   className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory gap-2 scroll-container"
@@ -170,7 +170,7 @@ const HomePage = () => {
               <div className="border w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center ">
                 <img src={tabler} alt="" />
               </div>
-              <div className="text-white font-semibold lg:text-xl md:text-sm sm:text-xs text-xs">
+              <div className="text-white font-semibold lg:text-xl md:text-sm sm:text-xs text-xs lg:ml-0 md:ml-0 sm:ml-0 -ml-2">
                 Projects
               </div>
               <div className="text-white text-lg font-bold">
@@ -182,7 +182,7 @@ const HomePage = () => {
               <div className="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center ">
                 <img src={iconassigned} alt="" />
               </div>
-              <div className=" font-semibold lg:text-xl md:text-sm sm:text-xs text-xs text-black">
+              <div className=" font-semibold lg:text-xl md:text-sm sm:text-xs text-xs lg:ml-0 md:ml-0 sm:ml-0 -ml-2 text-black ">
                 Assigned
               </div>
               <div className="text-black text-lg font-bold">

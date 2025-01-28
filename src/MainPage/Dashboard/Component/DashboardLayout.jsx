@@ -88,7 +88,7 @@ const DashboardLayout = ({ children }) => {
         </div>
       </header>
 
-      <div className="flex w-full mt-16">
+      <div className="flex w-[100%] lg:w-[100%] md:w-[100%] sm:w-[100%]  mt-16">
         {!isToggle && (
           <img
             src={menu}
@@ -104,11 +104,11 @@ const DashboardLayout = ({ children }) => {
         >
           <div className="flex flex-col h-full">
             <div className="mt-16 space-y-36">
-              <ul className="lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0">
+              <ul className="lg:space-y-6 md:space-y-5 sm:space-y-1 space-y-0 ">
                 {useFirstList.map((items, i) => (
                   <li
                     key={i}
-                    className="block py-2 -px-4 text-black md:text-sm sm:text-xs text-xs lg:text-base font-sans rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500 text-black"
+                    className="block py-2 -px-4 text-black md:text-sm sm:text-xs text-xs lg:text-base font-sans rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500 "
                   >
                     <NavLink
                       className={({ isActive, isPending }) =>
@@ -119,10 +119,10 @@ const DashboardLayout = ({ children }) => {
                       <div className="hover: flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0 relative group">
                         <img
                           src={items.sideicon}
-                          className="w-[20px] block sm-hidden lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon"
+                          className="!w-6 font-extrabold !h-6 block sm-hidden lg:!w-5 lg:!h-5 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon"
                           alt=""
                         />
-                        <div className="lg:block md:block sm:hidden hidden ">
+                        <div className="lg:block md:block sm:hidden hidden -mt-1">
                           {items.name}
                         </div>
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-black text-white text-xs rounded py-1 px-2 z-10">
@@ -163,7 +163,7 @@ const DashboardLayout = ({ children }) => {
                       <div className="hover: flex lg:gap-4 md:gap-1 sm:gap-3 md:-ms-3 lg:ms-0 sm:ms-0 ms-0 relative group">
                         <img
                           src={items.sideicon}
-                          className="w-[20px] block sm-hidden lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-5 sm:h-5 imgicon"
+                          className="w-[30px] block sm-hidden lg:w-5 lg:h-4 md:w-4 md:h-4 sm:w-7 sm:h-7 imgicon"
                           alt=""
                         />
                         <div className="lg:block md:block sm:hidden hidden">
@@ -199,7 +199,10 @@ const DashboardLayout = ({ children }) => {
             isToggle ? "w-full" : "w-full lg:ml-[20%] md:ml-[15%]"
           }`}
         >
+          <div className="z-0">
+
           {children}
+          </div>
         </section>
       </div>
     </div>

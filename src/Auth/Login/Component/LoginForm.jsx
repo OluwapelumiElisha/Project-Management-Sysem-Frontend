@@ -53,26 +53,18 @@ const LoginForm = () => {
                 </div>
       
                 {/* <Link to={'/ForgetPassword'}> */}
-        <p
-          // onClick={() => {
-          //   const email = form.watch('email');
-          //   console.log(email); // Logs the value of the email input field
-          //   if (email == null) {
-              
-          //   }else{
-          //     navigate('/ForgetPassword')
-          //   }
-          // }}
+        {/* <p
+        
           onClick={handleCheckEmail}
           className="cursor-pointer text-red-600 font-bold"
         >
           Forgot Password?
-        </p>
+        </p> */}
       {/* </Link> */}
 
            
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center mt-10">
                 <Button className='w-full bg-red-600 p-3' disabled={loading} type="submit">
                   {loading ? "Loading..." : "Sign in"}
                 </Button>
@@ -80,21 +72,22 @@ const LoginForm = () => {
             </form>
           </Form>
         </div>
-        <div className="flex items-center justify-center mt-4">
+        {/* <div className="flex items-center justify-center mt-10">
           <div className="flex-grow border-t border-gray-300"></div>
           <span className="text-gray-500 mx-2">or sign in with</span>
           <div className="flex-grow border-t border-gray-300"></div>
-        </div>
-        <div className="lg:flex items-center justify-center md:flex items-center justify-center  sm:flex items-center justify-center block items-center m-auto w-[80%] mt-4">
+        </div> */}
+        {/* <div className="lg:flex items-center justify-center md:flex items-center justify-center  sm:flex items-center justify-center block items-center m-auto w-[80%] mt-4">
           <img src={google} alt="Google" className="cursor-pointer" />
           <img src={facebook} alt="Facebook" className="cursor-pointer" />
-        </div>
-        <div className="flex items-center justify-center mt-4">
-          <p>Don't have an account?</p>
+        </div> */}
+        <div className="flex items-center justify-center mt-5">
+          <p className="lg:pb-0 md:pb-0 sm:pb-10 pb-12">Don't have an account?</p>
           <Link to={'/SignUp'}>
-            <p className="text-red-600 font-bold cursor-pointer pl-2 ">Sign Up</p>
+            <p className="text-red-600 font-bold cursor-pointer pl-2 lg:pb-0 md:pb-0 sm:pb-10 pb-12">Sign Up</p>
           </Link>
         </div>
+        
       </div>
     </div>
   );
