@@ -92,7 +92,7 @@ const LoginForm = () => {
         <div className="flex items-center justify-center mt-4">
           <p>Don't have an account?</p>
           <Link to={'/SignUp'}>
-            <p className="text-red-600 font-bold cursor-pointer pl-2">Sign Up</p>
+            <p className="text-red-600 font-bold cursor-pointer pl-2 ">Sign Up</p>
           </Link>
         </div>
       </div>
